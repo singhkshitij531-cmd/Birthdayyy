@@ -8,50 +8,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(135deg, #2a0f2e, #1a0a2e);
+      background: linear-gradient(135deg, #4c1d95, #2a0f4c);
       font-family: 'Playfair Display', serif;
-      overflow: hidden;
+      color: white;
     }
-    .petal {
-      position: absolute;
-      font-size: 22px;
-      animation: fall linear infinite;
-      opacity: 0.85;
-      z-index: 1;
+    .gift-box {
+      transition: transform 0.4s ease;
     }
-    @keyframes fall {
-      to { transform: translateY(110vh) rotate(800deg); }
+    .gift-box:hover {
+      transform: scale(1.06);
     }
     .letter {
       background: linear-gradient(#f5e8c7, #e8d5b8);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.7);
-      border: 8px solid #8b5a2b;
-      transition: all 0.6s ease;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      border: 10px solid #6b3a1f;
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center relative text-white">
+<body class="min-h-screen flex items-center justify-center px-6 py-12">
 
-  <!-- Falling petals -->
-  <div id="petals" class="absolute inset-0 pointer-events-none"></div>
-
-  <div class="text-center max-w-md mx-auto px-6 py-12 relative z-10">
-    <h1 class="text-5xl font-bold mb-3 tracking-wide text-pink-200">Happy Birthday, My Princess</h1>
-    <p class="text-2xl text-pink-300 mb-12">23rd April 2026</p>
+  <div class="text-center max-w-md mx-auto relative">
+    <h1 class="text-5xl font-bold mb-2 tracking-wide text-purple-200">Happy Birthday, My Princess</h1>
+    <p class="text-2xl text-purple-300 mb-12">23rd April 2026</p>
 
     <!-- Gift Box -->
-    <div id="giftBox" class="gift-box mx-auto w-72 h-72 bg-gradient-to-br from-red-700 via-pink-600 to-purple-700 rounded-3xl shadow-2xl flex items-center justify-center cursor-pointer hover:scale-105 transition-transform">
-      <div class="text-8xl drop-shadow-xl">🎁</div>
-      <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-red-600 text-xs font-bold px-6 py-1 rounded-full shadow">Click to Open Your Gift</div>
+    <div id="giftBox" class="gift-box mx-auto w-72 h-72 bg-gradient-to-br from-purple-700 via-violet-600 to-fuchsia-700 rounded-3xl shadow-2xl flex items-center justify-center cursor-pointer">
+      <div class="text-8xl">🎁</div>
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-purple-700 text-xs font-bold px-8 py-1.5 rounded-full shadow-md">Click to Open Your Gift</div>
     </div>
 
-    <!-- Revealed Content -->
+    <!-- Content after opening -->
     <div id="content" class="hidden mt-16 space-y-12">
 
-      <!-- Red Spider Lily Bouquet - YOUR EXACT IMAGE -->
+      <!-- Your Exact Red Spider Lily Bouquet -->
       <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6">
-        <img src="C:\Users\ASM\Desktop\27398_1.jpg" alt="Red Spider Lily Bouquet" class="mx-auto rounded-3xl shadow-2xl">
-        <p class="mt-6 text-pink-200 text-lg">Red Spider Lilies for the girl who makes my world more beautiful every day.</p>
+        <img src="https://i.imgur.com/K381d.png" 
+             alt="Red Spider Lily Bouquet" 
+             class="mx-auto rounded-3xl shadow-2xl w-full max-w-xs">
+        <p class="mt-6 text-purple-200 text-lg">Red Spider Lilies — for the girl who brings passion and beauty into my life.</p>
       </div>
 
       <!-- Vintage Letter -->
@@ -63,7 +57,7 @@
           <p>Thank you for all the efforts you put in — all kinds, even the ones I miss. The unseen efforts are the best, you know... it's when you really want good for someone else’s sake.</p>
           <p>I know my princess does that too. I just wanted to let you know how thankful I am for all your caring, loving acts and all the things you put up with. Your resilience towards me, having hope and faith in me, and just being there for me.</p>
           <p>I appreciate everything — all the small and the big things.</p>
-          <p>I just wanna say Thank you, from my side and from everyone else’s side too. Many times people don’t value others’ efforts... I understand that, so I will just say thank you from their side too.</p>
+          <p>I just wanna say Thank you, from my side and from everyone else’s side too.</p>
           <p>But you deserve way more than just a little praising. YOU PRINCESS, MY BABY DESERVE EVERYTHING.</p>
           <p class="pt-4">I will also be here for you and with you okayyy. It’s just me — your boyfriend Kshitij yess. HAAHAH ❤️</p>
         </div>
@@ -74,38 +68,20 @@
   </div>
 
   <script>
-    // Falling petals
-    function createPetal() {
-      const petal = document.createElement('div');
-      petal.className = 'petal';
-      petal.textContent = ['🌸','🌺','🪻','🌹'][Math.floor(Math.random()*4)];
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = Math.random() * 10 + 7 + 's';
-      petal.style.opacity = Math.random() * 0.6 + 0.7;
-      document.getElementById('petals').appendChild(petal);
-      setTimeout(() => petal.remove(), 20000);
-    }
-    setInterval(createPetal, 90);
-
     // Open gift box
     document.getElementById('giftBox').addEventListener('click', function() {
-      this.style.transform = 'scale(0.7) rotate(10deg)';
+      this.style.transform = 'scale(0.85)';
       setTimeout(() => {
         this.classList.add('hidden');
         document.getElementById('content').classList.remove('hidden');
-      }, 500);
+      }, 400);
     });
 
-    // Click letter for effect
+    // Gentle click effect on letter
     document.getElementById('letterContainer').addEventListener('click', function() {
-      this.style.transform = 'scale(1.05)';
-      setTimeout(() => this.style.transform = 'scale(1)', 300);
+      this.style.transform = 'scale(1.04)';
+      setTimeout(() => this.style.transform = 'scale(1)', 250);
     });
-
-    // Initial petals
-    for(let i = 0; i < 40; i++) {
-      setTimeout(createPetal, i * 30);
-    }
   </script>
 </body>
 </html>
