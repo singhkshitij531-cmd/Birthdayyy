@@ -31,21 +31,21 @@
     <h1 class="text-5xl font-bold mb-2 tracking-wide text-purple-200">Happy Birthday, My Princess</h1>
     <p class="text-2xl text-purple-300 mb-12">23rd April 2026</p>
 
-    <!-- Gift Box -->
-    <div id="giftBox" class="gift-box mx-auto w-72 h-72 bg-gradient-to-br from-purple-700 via-violet-600 to-fuchsia-700 rounded-3xl shadow-2xl flex items-center justify-center cursor-pointer">
+    <!-- Main Gift Box -->
+    <div id="mainGiftBox" class="gift-box mx-auto w-72 h-72 bg-gradient-to-br from-purple-700 via-violet-600 to-fuchsia-700 rounded-3xl shadow-2xl flex items-center justify-center cursor-pointer mb-8">
       <div class="text-8xl">🎁</div>
       <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-purple-700 text-xs font-bold px-8 py-1.5 rounded-full shadow-md">Click to Open Your Gift</div>
     </div>
 
-    <!-- Content after opening -->
-    <div id="content" class="hidden mt-16 space-y-12">
+    <!-- Content after main gift opens -->
+    <div id="mainContent" class="hidden mt-8 space-y-12">
 
-      <!-- Your Exact Red Spider Lily Bouquet -->
+      <!-- Normal Romantic Flower Bouquet -->
       <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6">
-        <img src="https://i.imgur.com/K381d.png" 
-             alt="Red Spider Lily Bouquet" 
+        <img src="https://i.imgur.com/7vL9kPq.jpg" 
+             alt="Romantic Flower Bouquet" 
              class="mx-auto rounded-3xl shadow-2xl w-full max-w-xs">
-        <p class="mt-6 text-purple-200 text-lg">Red Spider Lilies — for the girl who brings passion and beauty into my life.</p>
+        <p class="mt-6 text-purple-200 text-lg">A bouquet full of love, just for you, my princess.</p>
       </div>
 
       <!-- Vintage Letter -->
@@ -64,23 +64,53 @@
 
         <div class="text-right mt-10 text-sm">Forever yours,<br><span class="font-bold">Your Future Husband</span></div>
       </div>
+
+      <!-- Two Extra Interactive Gift Boxes -->
+      <div class="mt-12">
+        <p class="text-purple-300 mb-6 text-lg">Choose one more surprise from me ❤️</p>
+        <div class="grid grid-cols-2 gap-6">
+
+          <!-- Chocolate Ice Cream Box -->
+          <div id="iceCreamBox" class="gift-box bg-gradient-to-br from-amber-700 to-red-700 rounded-3xl p-8 shadow-xl cursor-pointer flex flex-col items-center">
+            <div class="text-6xl mb-3">🍫🍦</div>
+            <p class="text-sm font-medium">Chocolate Ice Cream</p>
+          </div>
+
+          <!-- Green Mango Box -->
+          <div id="mangoBox" class="gift-box bg-gradient-to-br from-green-600 to-emerald-700 rounded-3xl p-8 shadow-xl cursor-pointer flex flex-col items-center">
+            <div class="text-6xl mb-3">🥭</div>
+            <p class="text-sm font-medium">Green Mango</p>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
-    // Open gift box
-    document.getElementById('giftBox').addEventListener('click', function() {
+    // Open main gift box
+    document.getElementById('mainGiftBox').addEventListener('click', function() {
       this.style.transform = 'scale(0.85)';
       setTimeout(() => {
         this.classList.add('hidden');
-        document.getElementById('content').classList.remove('hidden');
+        document.getElementById('mainContent').classList.remove('hidden');
       }, 400);
     });
 
-    // Gentle click effect on letter
+    // Click letter for effect
     document.getElementById('letterContainer').addEventListener('click', function() {
       this.style.transform = 'scale(1.04)';
       setTimeout(() => this.style.transform = 'scale(1)', 250);
+    });
+
+    // Ice Cream Box Click
+    document.getElementById('iceCreamBox').addEventListener('click', function() {
+      alert("🍦 You chose Chocolate Ice Cream! Sweet like your smile 😘 I'll treat you to the real one when we meet!");
+    });
+
+    // Mango Box Click
+    document.getElementById('mangoBox').addEventListener('click', function() {
+      alert("🥭 You chose Green Manga! Tangy and fresh, just like the happiness you bring me 🌟");
     });
   </script>
 </body>
